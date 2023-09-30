@@ -5,8 +5,10 @@ Play with nostr filters and see the results.
 
 ## Features
 
-- [x] custom list of relays
-- [x] custom list of filters
+- [x] custom relays
+- [x] custom filters
+- [x] raw json events
+- [x] formatted events
 - [] local storage
 - [] import/export setup
 
