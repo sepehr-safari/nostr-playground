@@ -4,7 +4,7 @@ Thank you for your interest in contributing to Nostr Playground!
 
 ## Code of Conduct
 
-Before contributing to Nostr Playground, please review our [Code of Conduct](https://github.com/sepehr-safari/nostr-playground/blob/master/CODE_OF_CONDUCT.md) to ensure that all interactions in our community are respectful and inclusive.
+Before contributing to Nostr Playground, please review our [Code of Conduct](https://github.com/sepehr-safari/nostr-playground/blob/main/CODE_OF_CONDUCT.md) to ensure that all interactions in our community are respectful and inclusive.
 
 ## Issue Tracker
 
@@ -30,4 +30,4 @@ To maintain consistency throughout the Nostr Playground codebase, we use [ESLint
 
 ## License
 
-By contributing to Nostr Playground, you agree that your contributions will be licensed under the [MIT License](https://github.com/sepehr-safari/nostr-playground/blob/master/LICENSE.md).
+By contributing to Nostr Playground, you agree that your contributions will be licensed under the [MIT License](https://github.com/sepehr-safari/nostr-playground/blob/main/LICENSE.md).

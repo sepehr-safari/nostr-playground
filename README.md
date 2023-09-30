@@ -18,7 +18,7 @@ To get started with Nostr Playground, simply visit its website at [https://playg
 
 ## Contributing
 
-We welcome contributions from the community! If you'd like to contribute to Nostr Playground, please refer to the [CONTRIBUTING.md](https://github.com/sepehr-safari/nostr-playground/blob/master/CONTRIBUTING.md) file in the project's GitHub repository.
+We welcome contributions from the community! If you'd like to contribute to Nostr Playground, please refer to the [CONTRIBUTING.md](https://github.com/sepehr-safari/nostr-playground/blob/main/CONTRIBUTING.md) file in the project's GitHub repository.
 
 ## Donations
 
@@ -28,7 +28,7 @@ If you'd like to support the development of Nostr Playground, please consider do
 
 ## License
 
-Nostr Playground is licensed under the MIT License. For more information, see the [LICENSE.md](https://github.com/sepehr-safari/nostr-playground/blob/master/LICENSE.md) file in the project's GitHub repository.
+Nostr Playground is licensed under the MIT License. For more information, see the [LICENSE.md](https://github.com/sepehr-safari/nostr-playground/blob/main/LICENSE.md) file in the project's GitHub repository.
 
 ## Contact
 
