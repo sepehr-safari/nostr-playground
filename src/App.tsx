@@ -5,6 +5,8 @@ import { toast } from 'react-toastify';
 
 const pool = new SimplePool();
 
+// How do you like your spaghetti ?
+
 function App() {
   const [relayInput, setRelayInput] = useState<string>('');
   const [authorsInput, setAuthorsInput] = useState<string>('');
