@@ -9,8 +9,8 @@ Play with nostr filters and see the results.
 - [x] custom filters
 - [x] raw json events
 - [x] formatted events
-- [] local storage
-- [] import/export setup
+- [ ] local storage
+- [ ] import/export setup
 
 ## Getting Started
 
