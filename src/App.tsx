@@ -137,7 +137,7 @@ function App() {
         </button>
 
         <a
-          href="https://github.com/"
+          href="https://github.com/sepehr-safari/nostr-playground"
           target="_blank"
           className="text-xs font-medium bg-indigo-500/70 px-3 py-1 rounded-md hover:bg-indigo-500 sm:text-sm"
         >
