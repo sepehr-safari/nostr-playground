@@ -1,4 +1,4 @@
-import { Controls, Events, Filters, Relays } from '@/features';
+import { Controls, Events, Filters, Relays } from '@/features1';
 
 export const Page = () => {
   return (
