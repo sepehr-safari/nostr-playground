@@ -1,21 +1,21 @@
-import { ArrayForm } from '@/components';
+import { ArrayInputWithTitle, Card } from '@/common/components';
 
-import { useRelays } from './useRelays';
+import { useRelays } from './hooks';
 
 export const Relays = () => {
   const { addRelay, relays, removeRelay } = useRelays();
 
   return (
-    <div className="flex flex-col gap-2 p-4 rounded-xl shadow-lg border border-gray-300 bg-gray-50 duration-200 hover:border-indigo-600">
-      <h3 className="block text-md font-semibold text-gray-900">{`Relays`}</h3>
+    <Card.Container>
+      <Card.Title>{`Relays`}</Card.Title>
 
-      <ArrayForm
+      <ArrayInputWithTitle
         title=""
         placeholder="wss://nos.lol"
         array={relays}
         onAdd={addRelay}
         onRemove={removeRelay}
       />
-    </div>
+    </Card.Container>
   );
 };

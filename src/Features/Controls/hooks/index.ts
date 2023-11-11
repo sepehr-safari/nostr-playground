@@ -1,18 +1,18 @@
 import { useCallback } from 'react';
 import { toast } from 'react-toastify';
 
-import { useLocalStore } from '@/store';
+import { useStore } from '@/common/store';
 
 export const useControls = () => {
-  const pool = useLocalStore((state) => state.pool);
-  const events = useLocalStore((state) => state.events);
-  const filters = useLocalStore((state) => state.filters);
-  const relays = useLocalStore((state) => state.relays);
-  const subscription = useLocalStore((state) => state.subscription);
-  const clearEvents = useLocalStore((state) => state.clearEvents);
-  const setEose = useLocalStore((state) => state.setEose);
-  const setSubscription = useLocalStore((state) => state.setSubscription);
-  const clearSubscription = useLocalStore((state) => state.clearSubscription);
+  const pool = useStore((store) => store.pool);
+  const events = useStore((store) => store.events);
+  const filters = useStore((store) => store.filters);
+  const relays = useStore((store) => store.relays);
+  const subscription = useStore((store) => store.subscription);
+  const clearEvents = useStore((store) => store.clearEvents);
+  const setEose = useStore((store) => store.setEose);
+  const setSubscription = useStore((store) => store.setSubscription);
+  const clearSubscription = useStore((store) => store.clearSubscription);
 
   const subscribe = useCallback(() => {
     if (filters.length > 0 && relays.length > 0) {

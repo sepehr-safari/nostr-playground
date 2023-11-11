@@ -1,14 +1,14 @@
 import { useEffect } from 'react';
 import { toast } from 'react-toastify';
 
-import { useLocalStore } from '@/store';
+import { useStore } from '@/common/store';
 
 export const useEvents = () => {
-  const eose = useLocalStore((state) => state.eose);
-  const events = useLocalStore((state) => state.events);
-  const subscription = useLocalStore((state) => state.subscription);
-  const addEvent = useLocalStore((state) => state.addEvent);
-  const setEose = useLocalStore((state) => state.setEose);
+  const eose = useStore((store) => store.eose);
+  const events = useStore((store) => store.events);
+  const subscription = useStore((store) => store.subscription);
+  const addEvent = useStore((store) => store.addEvent);
+  const setEose = useStore((store) => store.setEose);
 
   useEffect(() => {
     if (!subscription) return;

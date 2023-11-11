@@ -1,29 +1,30 @@
 import { PlusIcon } from '@heroicons/react/24/outline';
 
-import { ArrayForm, NumberForm, StringForm } from '@/components';
+import {
+  ArrayInputWithTitle,
+  Button,
+  Card,
+  InputWithTitle,
+  RemoveButton,
+} from '@/common/components';
 
-import { useFilters } from './useFilters';
+import { useFilters } from './hooks';
 
 export const Filters = () => {
   const { filters, newFilter, removeFilterAt, setFilterItemAt, subscription } = useFilters();
 
   return (
-    <div className="p-4 rounded-xl shadow-lg border border-gray-300 bg-gray-50 duration-200 hover:border-indigo-600">
+    <Card.Container>
       <div className="flex gap-4 items-center justify-between">
-        <h3 className="block text-md font-semibold leading-6 text-gray-900">{`Filters`}</h3>
+        <Card.Title>{`Filters`}</Card.Title>
 
-        <button
-          onClick={newFilter}
-          type="button"
-          className="inline-flex items-center gap-x-1.5 rounded-md bg-indigo-600 px-3 py-2 text-xs font-semibold text-white shadow-sm hover:bg-indigo-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:opacity-50 disabled:cursor-not-allowed"
-          disabled={subscription != null}
-        >
+        <Button variant="primary" onClick={newFilter} disabled={subscription != null}>
           <PlusIcon className="-ml-0.5 h-4 w-4" aria-hidden="true" />
           {`New Filter`}
-        </button>
+        </Button>
       </div>
 
-      <hr className="my-4 border-gray-300" />
+      <Card.Divider />
 
       {filters.length == 0 && (
         <div className="mt-4 flex flex-wrap gap-4">
@@ -43,25 +44,14 @@ export const Filters = () => {
               {`Filter #${filterIndex + 1}`}
             </h3>
 
-            <button
+            <RemoveButton
               onClick={() => removeFilterAt(filterIndex)}
-              type="button"
-              className="group relative -mr-1 p-1 rounded-full hover:bg-gray-500/20 disabled:opacity-50 disabled:cursor-not-allowed"
               disabled={subscription != null}
-            >
-              <span className="sr-only">{`Remove`}</span>
-              <svg
-                viewBox="0 0 14 14"
-                className="h-4 w-4 stroke-gray-600/50 group-hover:stroke-gray-600/75"
-              >
-                <path d="M4 4l6 6m0-6l-6 6" />
-              </svg>
-              <span className="absolute -inset-1" />
-            </button>
+            />
           </div>
 
           <div className="p-4 pt-0 flex flex-col gap-4">
-            <ArrayForm
+            <ArrayInputWithTitle
               title="Authors"
               placeholder="pubkey (in hex format)"
               array={filter.authors || []}
@@ -78,7 +68,7 @@ export const Filters = () => {
               }
             />
 
-            <ArrayForm
+            <ArrayInputWithTitle
               title="IDs"
               placeholder="event id (in hex format)"
               array={filter.ids || []}
@@ -94,7 +84,7 @@ export const Filters = () => {
               }
             />
 
-            <ArrayForm
+            <ArrayInputWithTitle
               title="Kinds"
               placeholder="event kind (e.g. 0, 1, 9735, etc.)"
               array={filter.kinds?.map((k) => k.toString()) || []}
@@ -114,7 +104,7 @@ export const Filters = () => {
             <div className="w-full flex flex-col gap-4 rounded-md border border-gray-300 p-4 duration-200 hover:border-indigo-600">
               <h4 className="block text-sm font-medium text-gray-700">{`Tags`}</h4>
 
-              <ArrayForm
+              <ArrayInputWithTitle
                 title="Tag Names"
                 placeholder="tag name based on NIP-1 (e.g. e, p, a, t, r, etc.)"
                 array={Object.keys(filter).filter((key) => key.startsWith('#'))}
@@ -137,7 +127,7 @@ export const Filters = () => {
                   const tagName = tag.slice(1);
 
                   return (
-                    <ArrayForm
+                    <ArrayInputWithTitle
                       key={`filter${filterIndex}-tag${tagName}${tagIndex}`}
                       title={`Tag Values (#${tagName})`}
                       placeholder="tag value"
@@ -161,28 +151,66 @@ export const Filters = () => {
                 })}
             </div>
 
-            <StringForm filterIndex={filterIndex} filterKey="search" placeholder="search string" />
-
-            <NumberForm
-              filterIndex={filterIndex}
-              filterKey="limit"
-              placeholder="maximum number of events"
+            <InputWithTitle
+              title="Search"
+              placeholder="Search string"
+              value={String(filters[filterIndex].search)}
+              onChange={(e) => {
+                if (e.target.value === '') {
+                  setFilterItemAt(filterIndex, 'search', undefined);
+                } else {
+                  setFilterItemAt(filterIndex, 'search', parseInt(e.target.value));
+                }
+              }}
             />
 
-            <NumberForm
-              filterIndex={filterIndex}
-              filterKey="since"
-              placeholder="timestamp in seconds"
+            <InputWithTitle
+              type="number"
+              min={0}
+              title="Limit"
+              placeholder="Maximum number of events"
+              value={String(filters[filterIndex].limit)}
+              onChange={(e) => {
+                if (e.target.value === '') {
+                  setFilterItemAt(filterIndex, 'limit', undefined);
+                } else {
+                  setFilterItemAt(filterIndex, 'limit', parseInt(e.target.value));
+                }
+              }}
             />
 
-            <NumberForm
-              filterIndex={filterIndex}
-              filterKey="until"
-              placeholder="timestamp in seconds"
+            <InputWithTitle
+              type="number"
+              min={0}
+              title="Since"
+              placeholder="Timestamp in seconds"
+              value={String(filters[filterIndex].since)}
+              onChange={(e) => {
+                if (e.target.value === '') {
+                  setFilterItemAt(filterIndex, 'since', undefined);
+                } else {
+                  setFilterItemAt(filterIndex, 'since', parseInt(e.target.value));
+                }
+              }}
+            />
+
+            <InputWithTitle
+              type="number"
+              min={0}
+              title="Until"
+              placeholder="Timestamp in seconds"
+              value={String(filters[filterIndex].until)}
+              onChange={(e) => {
+                if (e.target.value === '') {
+                  setFilterItemAt(filterIndex, 'until', undefined);
+                } else {
+                  setFilterItemAt(filterIndex, 'until', parseInt(e.target.value));
+                }
+              }}
             />
           </div>
         </div>
       ))}
-    </div>
+    </Card.Container>
   );
 };
