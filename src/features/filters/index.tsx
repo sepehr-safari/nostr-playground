@@ -54,6 +54,7 @@ export const Filters = () => {
             <ArrayInputWithTitle
               title="Authors"
               placeholder="pubkey (in hex format)"
+              disabled={subscription != null}
               array={filter.authors || []}
               onAdd={(author) =>
                 author != '' &&
@@ -71,6 +72,7 @@ export const Filters = () => {
             <ArrayInputWithTitle
               title="IDs"
               placeholder="event id (in hex format)"
+              disabled={subscription != null}
               array={filter.ids || []}
               onAdd={(id) =>
                 id != '' && setFilterItemAt(filterIndex, 'ids', [...(filter.ids || []), id])
@@ -87,6 +89,7 @@ export const Filters = () => {
             <ArrayInputWithTitle
               title="Kinds"
               placeholder="event kind (e.g. 0, 1, 9735, etc.)"
+              disabled={subscription != null}
               array={filter.kinds?.map((k) => k.toString()) || []}
               onAdd={(kind) =>
                 kind != '' &&
@@ -107,6 +110,7 @@ export const Filters = () => {
               <ArrayInputWithTitle
                 title="Tag Names"
                 placeholder="tag name based on NIP-1 (e.g. e, p, a, t, r, etc.)"
+                disabled={subscription != null}
                 array={Object.keys(filter).filter((key) => key.startsWith('#'))}
                 onAdd={(tagName) =>
                   tagName != '' &&
@@ -131,6 +135,7 @@ export const Filters = () => {
                       key={`filter${filterIndex}-tag${tagName}${tagIndex}`}
                       title={`Tag Values (#${tagName})`}
                       placeholder="tag value"
+                      disabled={subscription != null}
                       array={filter[`#${tagName}`] || []}
                       onAdd={(tagValue) =>
                         tagValue != '' &&
@@ -154,6 +159,7 @@ export const Filters = () => {
             <InputWithTitle
               title="Search"
               placeholder="Search string"
+              disabled={subscription != null}
               value={String(filters[filterIndex].search)}
               onChange={(e) => {
                 if (e.target.value === '') {
@@ -169,6 +175,7 @@ export const Filters = () => {
               min={0}
               title="Limit"
               placeholder="Maximum number of events"
+              disabled={subscription != null}
               value={String(filters[filterIndex].limit)}
               onChange={(e) => {
                 if (e.target.value === '') {
@@ -184,6 +191,7 @@ export const Filters = () => {
               min={0}
               title="Since"
               placeholder="Timestamp in seconds"
+              disabled={subscription != null}
               value={String(filters[filterIndex].since)}
               onChange={(e) => {
                 if (e.target.value === '') {
@@ -199,6 +207,7 @@ export const Filters = () => {
               min={0}
               title="Until"
               placeholder="Timestamp in seconds"
+              disabled={subscription != null}
               value={String(filters[filterIndex].until)}
               onChange={(e) => {
                 if (e.target.value === '') {

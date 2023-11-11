@@ -3,7 +3,7 @@ import { ArrayInputWithTitle, Card } from '@/common/components';
 import { useRelays } from './hooks';
 
 export const Relays = () => {
-  const { addRelay, relays, removeRelay } = useRelays();
+  const { addRelay, relays, removeRelay, subscription } = useRelays();
 
   return (
     <Card.Container>
@@ -12,6 +12,7 @@ export const Relays = () => {
       <ArrayInputWithTitle
         title=""
         placeholder="wss://nos.lol"
+        disabled={subscription != null}
         array={relays}
         onAdd={addRelay}
         onRemove={removeRelay}
