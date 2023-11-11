@@ -1,16 +1,16 @@
 import { Event, Filter, SimplePool, Sub } from 'nostr-tools';
 import { create } from 'zustand';
 
-interface State {
+type State = {
   pool: SimplePool;
   relays: string[];
   filters: Filter[];
   events: Event[];
   subscription: Sub | null;
   eose: boolean;
-}
+};
 
-interface Actions {
+type Actions = {
   addRelay: (relay: string) => void;
   removeRelay: (relay: string) => void;
   newFilter: () => void;
@@ -21,9 +21,9 @@ interface Actions {
   setSubscription: (sub: Sub) => void;
   clearSubscription: () => void;
   setEose: (eose: boolean) => void;
-}
+};
 
-export const useLocalStore = create<State & Actions>((set) => ({
+export const useStore = create<State & Actions>((set) => ({
   pool: new SimplePool(),
   relays: [],
   filters: [],
