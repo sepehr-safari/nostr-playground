@@ -1,6 +1,6 @@
-import { Controls, Events, Filters, Relays } from '@/Features';
+import { Controls, Events, Filters, Relays } from '@/features';
 
-export const Home = () => {
+export const Page = () => {
   return (
     <div className="flex flex-col w-full h-full justify-center gap-4">
       <div className="h-14 w-full flex items-center gap-4 bg-indigo-600 text-white shadow-md px-4">
