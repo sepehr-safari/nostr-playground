@@ -8,6 +8,7 @@ type Props = {
   array: string[];
   onAdd: (value: string) => void;
   onRemove: (item: string) => void;
+  defaultValue?: string;
 } & React.InputHTMLAttributes<HTMLInputElement>;
 
 export const ArrayInputWithTitle = ({
@@ -17,14 +18,16 @@ export const ArrayInputWithTitle = ({
   array,
   onAdd,
   onRemove,
+  defaultValue = '',
 }: Props) => {
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState(defaultValue);
 
   const add = () => {
-    if (input.trim() === '') return;
+    if (input.trim() == '') return; // reject empty inputs
+    if (array.includes(input)) return; // reject duplicate inputs
 
     onAdd(input);
-    setInput('');
+    setInput(defaultValue);
   };
 
   const remove = (item: string) => onRemove(item);
