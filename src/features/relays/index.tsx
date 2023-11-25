@@ -12,6 +12,7 @@ export const Relays = () => {
       <ArrayInputWithTitle
         title=""
         placeholder="wss://nos.lol"
+        defaultValue={'wss://'}
         disabled={subscription != null}
         array={relays}
         onAdd={addRelay}
