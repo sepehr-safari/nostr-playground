@@ -160,12 +160,12 @@ export const Filters = () => {
               title="Search"
               placeholder="Search string"
               disabled={subscription != null}
-              value={String(filters[filterIndex].search)}
+              value={filters[filterIndex].search}
               onChange={(e) => {
                 if (e.target.value === '') {
                   setFilterItemAt(filterIndex, 'search', undefined);
                 } else {
-                  setFilterItemAt(filterIndex, 'search', parseInt(e.target.value));
+                  setFilterItemAt(filterIndex, 'search', e.target.value);
                 }
               }}
             />
